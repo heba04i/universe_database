@@ -16,6 +16,29 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+DROP DATABASE universe;
+--
+-- Name: universe; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE universe WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8';
+
+
+ALTER DATABASE universe OWNER TO postgres;
+
+\connect universe
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -169,87 +192,77 @@ ALTER TABLE public.star ALTER COLUMN star_id ADD GENERATED ALWAYS AS IDENTITY (
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-COPY public.galaxy (galaxy_id, name, description, age_in_millions_of_years, has_life) FROM stdin;
-1	Milky Way	Our home galaxy	13600	t
-2	Andromeda	A nearby spiral galaxy	10000	f
-3	Triangulum	A small spiral galaxy	12000	f
-4	Whirlpool	A beautiful spiral galaxy	8000	f
-5	Sombrero	A bright galaxy	9000	f
-6	Pinwheel	A large spiral galaxy	11000	f
-\.
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (1, 'Milky Way', 'Our home galaxy', 13600, true);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (2, 'Andromeda', 'A nearby spiral galaxy', 10000, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (3, 'Triangulum', 'A small spiral galaxy', 12000, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (4, 'Whirlpool', 'A beautiful spiral galaxy', 8000, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (5, 'Sombrero', 'A bright galaxy', 9000, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (6, 'Pinwheel', 'A large spiral galaxy', 11000, false);
 
 
 --
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-COPY public.moon (moon_id, name, planet_id, radius, is_spherical) FROM stdin;
-1	Moon	3	1737.4	t
-2	Phobos	4	11.3	f
-3	Deimos	4	6.2	f
-4	Io	5	1821.6	t
-5	Europa	5	1560.8	t
-6	Ganymede	5	2634.1	t
-7	Callisto	5	2410.3	t
-8	Titan	6	2574.7	t
-9	Enceladus	6	252.1	t
-10	Mimas	6	198.2	t
-11	Rhea	6	763.8	t
-12	Iapetus	6	734.5	t
-13	Dione	6	561.4	t
-14	Tethys	6	531.1	t
-15	Miranda	7	235.8	t
-16	Ariel	7	578.9	t
-17	Umbriel	7	584.7	t
-18	Titania	7	788.9	t
-19	Oberon	7	761.4	t
-20	Triton	8	1353.4	t
-\.
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (1, 'Moon', 3, 1737.4, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (2, 'Phobos', 4, 11.3, false);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (3, 'Deimos', 4, 6.2, false);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (4, 'Io', 5, 1821.6, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (5, 'Europa', 5, 1560.8, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (6, 'Ganymede', 5, 2634.1, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (7, 'Callisto', 5, 2410.3, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (8, 'Titan', 6, 2574.7, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (9, 'Enceladus', 6, 252.1, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (10, 'Mimas', 6, 198.2, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (11, 'Rhea', 6, 763.8, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (12, 'Iapetus', 6, 734.5, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (13, 'Dione', 6, 561.4, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (14, 'Tethys', 6, 531.1, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (15, 'Miranda', 7, 235.8, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (16, 'Ariel', 7, 578.9, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (17, 'Umbriel', 7, 584.7, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (18, 'Titania', 7, 788.9, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (19, 'Oberon', 7, 761.4, true);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (20, 'Triton', 8, 1353.4, true);
 
 
 --
 -- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-COPY public.planet (planet_id, name, star_id, mass, has_rings) FROM stdin;
-1	Mercury	1	0.055	f
-2	Venus	1	0.815	f
-3	Earth	1	1.000	f
-4	Mars	1	0.107	f
-5	Jupiter	1	317.8	t
-6	Saturn	1	95.2	t
-7	Uranus	1	14.5	t
-8	Neptune	1	17.1	t
-9	Planet X	2	2.5	f
-10	Planet Y	3	4.2	t
-11	Planet Z	4	1.8	f
-12	Planet A	5	3.1	t
-\.
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (1, 'Mercury', 1, 0.055, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (2, 'Venus', 1, 0.815, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (3, 'Earth', 1, 1.000, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (4, 'Mars', 1, 0.107, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (5, 'Jupiter', 1, 317.8, true);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (6, 'Saturn', 1, 95.2, true);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (7, 'Uranus', 1, 14.5, true);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (8, 'Neptune', 1, 17.1, true);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (9, 'Planet X', 2, 2.5, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (10, 'Planet Y', 3, 4.2, true);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (11, 'Planet Z', 4, 1.8, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (12, 'Planet A', 5, 3.1, true);
 
 
 --
 -- Data for Name: space_mission; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-COPY public.space_mission (space_mission_id, name, agency, launch_year, is_active) FROM stdin;
-1	Apollo 11	NASA	1969	f
-2	Voyager 1	NASA	1977	t
-3	Artemis I	NASA	2022	f
-\.
+INSERT INTO public.space_mission OVERRIDING SYSTEM VALUE VALUES (1, 'Apollo 11', 'NASA', 1969, false);
+INSERT INTO public.space_mission OVERRIDING SYSTEM VALUE VALUES (2, 'Voyager 1', 'NASA', 1977, true);
+INSERT INTO public.space_mission OVERRIDING SYSTEM VALUE VALUES (3, 'Artemis I', 'NASA', 2022, false);
 
 
 --
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-COPY public.star (star_id, name, galaxy_id, distance_from_earth, is_visible) FROM stdin;
-1	Sun	1	0	t
-2	Sirius	1	8.6	t
-3	Vega	2	25	t
-4	Polaris	3	323	t
-5	Betelgeuse	4	642	t
-6	Rigel	5	860	t
-\.
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (1, 'Sun', 1, 0, true);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (2, 'Sirius', 1, 8.6, true);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (3, 'Vega', 2, 25, true);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (4, 'Polaris', 3, 323, true);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (5, 'Betelgeuse', 4, 642, true);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (6, 'Rigel', 5, 860, true);
 
 
 --
